@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# File tạo tự động khi train/chạy thử
+runs/
+Train_smoke/
+dataset_yolo/
+yolo11n.pt
+
+# Chỉ giữ kết quả train cần để chạy và đánh giá
+Train_hoten/*
+!Train_hoten/wine_colors/
+Train_hoten/wine_colors/*
+!Train_hoten/wine_colors/results.csv
+!Train_hoten/wine_colors/results.png
+!Train_hoten/wine_colors/confusion_matrix.png
+!Train_hoten/wine_colors/weights/
+Train_hoten/wine_colors/weights/*
+!Train_hoten/wine_colors/weights/best.pt
+
+# Chỉ giữ bộ ảnh đã gán nhãn
+dataset_raw/annotation_source_backup/
+dataset_raw/images/*
+!dataset_raw/images/bot/
+
+# Chỉ giữ một video nhỏ để chạy thử
+Video_Wine_Bottle/*
+!Video_Wine_Bottle/yellow_1.mp4
+
+# File nháp
+app_action.py
+*.corrupt

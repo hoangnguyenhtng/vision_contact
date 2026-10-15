@@ -43,19 +43,27 @@ python extract_frames.py
 Phần lấy ảnh không cần Tkinter. Nhớ bốn bước:
 
 ```text
-chọn video → đọc FPS → tính frame_step → lưu mỗi frame_step frame
+đặt đường dẫn → đặt FRAME_STEP → đọc một frame → bỏ qua các frame còn lại
 ```
 
-Công thức duy nhất cần nhớ:
+Công thức tính tay:
 
-```python
-frame_step = round(video_fps / SAMPLE_FPS)
+```text
+tổng frame = FPS × số giây video
+FRAME_STEP = tổng frame / số ảnh muốn lấy
+```
+
+Ví dụ: video 30 FPS, dài 60 giây, muốn khoảng 100 ảnh:
+
+```text
+tổng frame = 30 × 60 = 1800
+FRAME_STEP = 1800 / 100 = 18
 ```
 
 Chiến lược dữ liệu nhanh:
 
-1. Bắt đầu với `SAMPLE_FPS = 2`.
-2. Video 30 giây sẽ cho khoảng 60 ảnh.
+1. Tính `FRAME_STEP` để lấy khoảng 50–100 ảnh ban đầu.
+2. `FRAME_STEP` càng lớn thì số ảnh lấy được càng ít.
 3. Gán nhãn tất cả vật thể nhìn thấy, box ôm sát vật thể.
 4. Vẫn gán nhãn vật thể bị cắt một phần ở mép ảnh nếu còn nhận biết được.
 5. Không trích mọi frame vì ảnh gần nhau gần như giống hệt nhau.

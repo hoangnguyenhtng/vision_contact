@@ -56,8 +56,10 @@ Trước khi chạy, sửa ba dòng ở đầu `extract_frames.py`:
 ```python
 VIDEO_PATH = "duong_dan_video.mp4"
 OUTPUT_DIR = Path("dataset_raw/images/bot")
-SAMPLE_FPS = 2
+FRAME_STEP = 15
 ```
+
+`FRAME_STEP = 15` nghĩa là cứ 15 frame lưu một ảnh. Bạn tự tính con số này trước khi chạy.
 
 Script không có giao diện và mặc định lưu ảnh vào:
 

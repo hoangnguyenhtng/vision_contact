@@ -7,7 +7,7 @@ import cv2
 
 VIDEO_PATH = "Video_Wine_Bottle/yellow_1.mp4"  # Sửa đường dẫn video tại đây
 OUTPUT_DIR = Path("dataset_raw/images/bot")
-SAMPLE_FPS = 2  # Số ảnh lấy trong một giây video
+FRAME_STEP = 15  # Cứ 15 frame lấy 1 ảnh
 
 
 def main():
@@ -16,8 +16,6 @@ def main():
     if not capture.isOpened():
         raise RuntimeError("Cannot open video")
 
-    video_fps = capture.get(cv2.CAP_PROP_FPS)
-    frame_step = max(1, round(video_fps / SAMPLE_FPS))
     frame_index = 0
     saved_count = 0
 
@@ -26,12 +24,15 @@ def main():
         if not success:
             break
 
-        if frame_index % frame_step == 0:
-            image_path = OUTPUT_DIR / f"frame_{frame_index:06d}.jpg"
-            if cv2.imwrite(str(image_path), frame):
-                saved_count += 1
+        image_path = OUTPUT_DIR / f"frame_{frame_index:06d}.jpg"
+        if cv2.imwrite(str(image_path), frame):
+            saved_count += 1
 
-        frame_index += 1
+        for _ in range(FRAME_STEP - 1):
+            if not capture.grab():
+                break
+
+        frame_index += FRAME_STEP
 
     capture.release()
     print(f"Saved {saved_count} images to {OUTPUT_DIR}")

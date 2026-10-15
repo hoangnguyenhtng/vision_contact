@@ -45,6 +45,22 @@ Xem kế hoạch luyện 120 phút tại `HUONG_DAN_LUYEN_THI.md`.
 
 ## Chuẩn bị và train lại model
 
+Lấy ảnh từ một video:
+
+```powershell
+python extract_frames.py
+```
+
+Script mở hộp thoại chọn video, mặc định lấy `2` ảnh/giây và lưu vào:
+
+```text
+dataset_raw/images/bot
+dataset_raw/labels/bot
+```
+
+Muốn lấy dày hoặc thưa hơn, chỉ sửa `SAMPLE_FPS` ở đầu `extract_frames.py`.
+Sau đó mở LabelImg, chọn thư mục ảnh, đặt Save Dir là thư mục nhãn và chọn định dạng YOLO.
+
 Bộ dữ liệu gán nhãn nằm trong:
 
 ```text

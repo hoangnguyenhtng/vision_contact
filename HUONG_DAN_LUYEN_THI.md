@@ -26,6 +26,35 @@ Quy tắc tách code:
 - `AppActions` không tạo widget bằng `grid()` hoặc `pack()`.
 - `main.py` không chứa logic.
 
+## 1.1. Lấy ảnh để gán nhãn từ một video
+
+Chạy:
+
+```powershell
+python extract_frames.py
+```
+
+Nhớ bốn bước trong script:
+
+```text
+chọn video → đọc FPS → tính frame_step → lưu mỗi frame_step frame
+```
+
+Công thức duy nhất cần nhớ:
+
+```python
+frame_step = round(video_fps / SAMPLE_FPS)
+```
+
+Chiến lược dữ liệu nhanh:
+
+1. Bắt đầu với `SAMPLE_FPS = 2`.
+2. Video 30 giây sẽ cho khoảng 60 ảnh.
+3. Gán nhãn tất cả vật thể nhìn thấy, box ôm sát vật thể.
+4. Vẫn gán nhãn vật thể bị cắt một phần ở mép ảnh nếu còn nhận biết được.
+5. Không trích mọi frame vì ảnh gần nhau gần như giống hệt nhau.
+6. Train thử, xem video nào bị miss rồi bổ sung đúng các frame khó.
+
 ## 2. Thứ tự viết bài trong 120 phút
 
 ### 0–10 phút: tạo sườn

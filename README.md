@@ -51,15 +51,22 @@ Lấy ảnh từ một video:
 python extract_frames.py
 ```
 
-Script mở hộp thoại chọn video, mặc định lấy `2` ảnh/giây và lưu vào:
+Trước khi chạy, sửa ba dòng ở đầu `extract_frames.py`:
+
+```python
+VIDEO_PATH = "duong_dan_video.mp4"
+OUTPUT_DIR = Path("dataset_raw/images/bot")
+SAMPLE_FPS = 2
+```
+
+Script không có giao diện và mặc định lưu ảnh vào:
 
 ```text
 dataset_raw/images/bot
 dataset_raw/labels/bot
 ```
 
-Muốn lấy dày hoặc thưa hơn, chỉ sửa `SAMPLE_FPS` ở đầu `extract_frames.py`.
-Sau đó mở LabelImg, chọn thư mục ảnh, đặt Save Dir là thư mục nhãn và chọn định dạng YOLO.
+Sau đó mở LabelImg, chọn thư mục ảnh, đặt Save Dir là `dataset_raw/labels/bot` và chọn định dạng YOLO.
 
 Bộ dữ liệu gán nhãn nằm trong:
 

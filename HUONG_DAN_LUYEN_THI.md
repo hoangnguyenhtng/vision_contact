@@ -28,13 +28,19 @@ Quy tắc tách code:
 
 ## 1.1. Lấy ảnh để gán nhãn từ một video
 
-Chạy:
+Sửa đường dẫn ở đầu `extract_frames.py`:
+
+```python
+VIDEO_PATH = "duong_dan_video.mp4"
+```
+
+Sau đó chạy:
 
 ```powershell
 python extract_frames.py
 ```
 
-Nhớ bốn bước trong script:
+Phần lấy ảnh không cần Tkinter. Nhớ bốn bước:
 
 ```text
 chọn video → đọc FPS → tính frame_step → lưu mỗi frame_step frame
